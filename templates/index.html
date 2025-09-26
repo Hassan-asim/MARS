@@ -646,7 +646,11 @@
 
         async function pollStatus() {
             try {
-                const response = await fetch('/status');
+                const response = await fetch('/status', {
+                    headers: {
+                        'Authorization': localStorage.getItem('mars_user') ? 'Bearer token' : ''
+                    }
+                });
                 const data = await response.json();
 
                 if (data.is_running) {
@@ -707,6 +711,9 @@
             try {
                 const response = await fetch(`/download-pdf/${type}`, {
                     method: 'GET',
+                    headers: {
+                        'Authorization': localStorage.getItem('mars_user') ? 'Bearer token' : ''
+                    }
                 });
 
                 if (response.ok) {
@@ -737,7 +744,16 @@
             const title = document.getElementById('modalTitle');
             
             title.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Report`;
-            iframe.src = `/view-pdf/${type}`;
+            const authHeader = localStorage.getItem('mars_user') ? 'Bearer token' : '';
+            // Use blob URL to include auth header
+            fetch(`/view-pdf/${type}`, { headers: { 'Authorization': authHeader } })
+                .then(r => r.blob())
+                .then(b => {
+                    iframe.src = URL.createObjectURL(b);
+                })
+                .catch(() => {
+                    iframe.src = `/view-pdf/${type}`;
+                });
             modal.style.display = 'block';
         }
 
