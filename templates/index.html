@@ -13,24 +13,26 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2c2c2e 0%, #3a3a3c 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            color: #ffffff;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(28, 28, 30, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 40px;
             max-width: 600px;
             width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             position: relative;
+            color: #ffffff;
         }
 
         .user-menu {
@@ -46,11 +48,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(128, 128, 128, 0.2);
             padding: 8px 12px;
             border-radius: 20px;
             font-size: 14px;
-            color: #666;
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logout-btn {
@@ -78,14 +81,15 @@
         .logo {
             font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #ffff00, #e6e600);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
         }
 
         .subtitle {
-            color: #666;
+            color: #b0b0b0;
             font-size: 1.1rem;
             font-weight: 400;
         }
@@ -98,24 +102,25 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #333;
+            color: #e0e0e0;
             font-size: 0.95rem;
         }
 
         input[type="text"], input[type="email"], textarea {
             width: 100%;
             padding: 16px 20px;
-            border: 2px solid #e1e5e9;
+            border: 2px solid #48484a;
             border-radius: 12px;
             font-size: 16px;
             transition: all 0.3s ease;
-            background: #fff;
+            background: #2c2c2e;
+            color: #ffffff;
         }
 
         input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #ffff00;
+            box-shadow: 0 0 0 3px rgba(255, 255, 0, 0.2);
         }
 
         textarea {
@@ -124,8 +129,8 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, #ffff00, #e6e600);
+            color: #000000;
             border: none;
             padding: 16px 32px;
             border-radius: 12px;
@@ -136,11 +141,12 @@
             width: 100%;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 255, 0, 0.5);
         }
 
         .btn:active {
@@ -198,27 +204,177 @@
         .feature-list {
             margin-top: 30px;
             padding-top: 30px;
-            border-top: 1px solid #e1e5e9;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .feature-item {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            color: #666;
+            color: #b0b0b0;
         }
 
         .feature-icon {
             width: 20px;
             height: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #ffff00, #e6e600);
             border-radius: 50%;
             margin-right: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #000000;
             font-size: 12px;
+            box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+        }
+
+        .download-section {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(128, 128, 128, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .download-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .pdf-item {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #404040, #606060);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 0, 0.3);
+            border-color: rgba(255, 255, 0, 0.5);
+        }
+
+        .view-btn {
+            background: linear-gradient(135deg, #ffff00, #e6e600);
+            color: #000000;
+            border: none;
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 60px;
+            box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+        }
+
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 255, 0, 0.5);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #1a1a1a;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 1000px;
+            height: 90%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #ffff00, #e6e600);
+            color: #000000;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .close {
+            color: #000000;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: #333333;
+        }
+
+        .modal-body {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #pdfViewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .progress-bar {
+            margin-top: 10px;
+            height: 6px;
+            background: rgba(128, 128, 128, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffff00, #e6e600);
+            transition: width 0.3s ease;
+            width: 0%;
+            box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
         }
 
         @media (max-width: 768px) {
@@ -229,6 +385,10 @@
             
             .logo {
                 font-size: 2rem;
+            }
+
+            .download-buttons {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -265,6 +425,64 @@
         </form>
 
         <div id="status" class="status"></div>
+        
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div id="downloadSection" class="download-section" style="display: none;">
+            <h3 style="color: #333; margin-bottom: 15px; font-size: 1.1rem;">📥 Download Research Results</h3>
+            <div class="download-buttons">
+                <div class="pdf-item">
+                    <button class="download-btn" onclick="downloadPDF('comprehensive')">
+                        📄 Download Comprehensive Report
+                    </button>
+                    <button class="view-btn" onclick="viewPDF('comprehensive')">👁️ View</button>
+                </div>
+                <div class="pdf-item">
+                    <button class="download-btn" onclick="downloadPDF('executive')">
+                        📊 Download Executive Summary
+                    </button>
+                    <button class="view-btn" onclick="viewPDF('executive')">👁️ View</button>
+                </div>
+                <div class="pdf-item">
+                    <button class="download-btn" onclick="downloadPDF('market')">
+                        📈 Download Market Analysis
+                    </button>
+                    <button class="view-btn" onclick="viewPDF('market')">👁️ View</button>
+                </div>
+                <div class="pdf-item">
+                    <button class="download-btn" onclick="downloadPDF('technical')">
+                        🔧 Download Technical Report
+                    </button>
+                    <button class="view-btn" onclick="viewPDF('technical')">👁️ View</button>
+                </div>
+            </div>
+            <div class="research-info" style="margin-top: 15px; padding: 15px; background: rgba(255, 255, 0, 0.1); border-radius: 8px;">
+                <h4 style="color: #ffff00; margin-bottom: 10px;">📊 Current Research Session</h4>
+                <p id="currentTopic" style="color: #e0e0e0; font-size: 14px; margin-bottom: 5px;">Topic: Loading...</p>
+                <p id="currentEmail" style="color: #e0e0e0; font-size: 14px; margin-bottom: 10px;">Email: Loading...</p>
+                <p style="color: #b0b0b0; font-size: 12px; text-align: center;">
+                    💌 Research results sent to your email • 📄 PDFs ready for download
+                </p>
+                <button class="clear-btn" onclick="clearResearchData()" style="margin-top: 10px; padding: 6px 12px; background: rgba(255,59,48,0.2); color: #ff3b30; border: 1px solid rgba(255,59,48,0.3); border-radius: 6px; font-size: 12px; cursor: pointer;">
+                    🗑️ Start New Research
+                </button>
+            </div>
+        </div>
+
+        <!-- PDF Viewer Modal -->
+        <div id="pdfModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle">PDF Viewer</h3>
+                    <span class="close" onclick="closePDFModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
 
         <div class="feature-list">
             <div class="feature-item">
@@ -298,10 +516,55 @@
                 const userData = JSON.parse(user);
                 document.getElementById('user-display-name').textContent = 
                     userData.displayName || userData.email.split('@')[0];
+                
+                // Load cached research data
+                loadCachedResearchData();
             } else {
-                // Redirect to auth if no user found
-                window.location.href = '/auth';
+                // Only redirect if we're not already on the auth page
+                if (window.location.pathname !== '/auth') {
+                    window.location.href = '/auth';
+                }
             }
+        }
+
+        // Load cached research data
+        function loadCachedResearchData() {
+            const cachedResearch = localStorage.getItem('mars_research_data');
+            if (cachedResearch) {
+                const researchData = JSON.parse(cachedResearch);
+                document.getElementById('currentTopic').textContent = `Topic: ${researchData.topic || 'No research yet'}`;
+                document.getElementById('currentEmail').textContent = `Email: ${researchData.email || 'Not set'}`;
+                
+                // Show download section if research is complete
+                if (researchData.completed) {
+                    showDownloadSection();
+                }
+            } else {
+                document.getElementById('currentTopic').textContent = 'Topic: No research yet';
+                document.getElementById('currentEmail').textContent = 'Email: Not set';
+            }
+        }
+
+        // Cache research data
+        function cacheResearchData(topic, email, completed = false) {
+            const researchData = {
+                topic: topic,
+                email: email,
+                completed: completed,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('mars_research_data', JSON.stringify(researchData));
+            loadCachedResearchData();
+        }
+
+        // Clear research data
+        function clearResearchData() {
+            localStorage.removeItem('mars_research_data');
+            document.getElementById('downloadSection').style.display = 'none';
+            document.getElementById('topic').value = '';
+            document.getElementById('recipient_email').value = '';
+            loadCachedResearchData();
+            showStatus('Research data cleared. Ready for new research!', 'success');
         }
 
         // Logout function
@@ -331,6 +594,9 @@
                 return;
             }
 
+            // Cache research data immediately
+            cacheResearchData(topic, recipient_email, false);
+
             // Update button state
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="loading"></span>Starting Research...';
@@ -340,6 +606,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('mars_user') ? 'Bearer token' : ''
                     },
                     body: JSON.stringify({
                         topic: topic,
@@ -375,6 +642,8 @@
             submitBtn.innerHTML = 'Start Research';
         }
 
+        let progressInterval;
+
         async function pollStatus() {
             try {
                 const response = await fetch('/status');
@@ -382,15 +651,101 @@
 
                 if (data.is_running) {
                     showStatus(data.status, 'info');
+                    updateProgress(data.status);
                     setTimeout(pollStatus, 3000); // Poll every 3 seconds
                 } else {
                     showStatus(data.status, data.status.includes('Error') ? 'error' : 'success');
+                    if (!data.status.includes('Error')) {
+                        showDownloadSection();
+                        // Mark research as completed in cache
+                        const cachedResearch = localStorage.getItem('mars_research_data');
+                        if (cachedResearch) {
+                            const researchData = JSON.parse(cachedResearch);
+                            cacheResearchData(researchData.topic, researchData.email, true);
+                        }
+                    }
                     resetButton();
+                    hideProgress();
                 }
             } catch (error) {
                 showStatus('Status check failed', 'error');
                 resetButton();
+                hideProgress();
             }
+        }
+
+        function updateProgress(status) {
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            
+            progressBar.style.display = 'block';
+            
+            let percentage = 0;
+            if (status.includes('Initializing')) percentage = 10;
+            else if (status.includes('Technology research')) percentage = 25;
+            else if (status.includes('Market analysis')) percentage = 45;
+            else if (status.includes('Financial analysis')) percentage = 65;
+            else if (status.includes('Generating reports')) percentage = 80;
+            else if (status.includes('Creating PDF')) percentage = 95;
+            else if (status.includes('completed')) percentage = 100;
+            
+            progressFill.style.width = percentage + '%';
+        }
+
+        function hideProgress() {
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.display = 'none';
+        }
+
+        function showDownloadSection() {
+            const downloadSection = document.getElementById('downloadSection');
+            downloadSection.style.display = 'block';
+        }
+
+        // PDF Download Functions
+        async function downloadPDF(type) {
+            try {
+                const response = await fetch(`/download-pdf/${type}`, {
+                    method: 'GET',
+                });
+
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = `MARS_${type}_report.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    showStatus(`${type} PDF downloaded successfully!`, 'success');
+                } else {
+                    throw new Error('Download failed');
+                }
+            } catch (error) {
+                showStatus(`Failed to download ${type} PDF. This is a demo - PDFs would be generated by the full AI system.`, 'info');
+            }
+        }
+
+        // View PDF in modal
+        function viewPDF(type) {
+            const modal = document.getElementById('pdfModal');
+            const iframe = document.getElementById('pdfViewer');
+            const title = document.getElementById('modalTitle');
+            
+            title.textContent = `${type.charAt(0).toUpperCase() + type.slice(1)} Report`;
+            iframe.src = `/view-pdf/${type}`;
+            modal.style.display = 'block';
+        }
+
+        function closePDFModal() {
+            const modal = document.getElementById('pdfModal');
+            const iframe = document.getElementById('pdfViewer');
+            modal.style.display = 'none';
+            iframe.src = '';
         }
     </script>
 </body>
