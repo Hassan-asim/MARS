@@ -1,0 +1,29 @@
+# Core CrewAI and AI dependencies
+crewai[tools]>=0.177.0,<1.0.0
+openai>=1.0.0
+zhipuai>=2.0.0
+
+# Web interface dependencies
+flask>=2.3.0
+flask-session>=0.5.0
+
+# Gmail service dependencies
+google-auth>=2.22.0
+google-auth-oauthlib>=1.0.0
+google-auth-httplib2>=0.1.0
+google-api-python-client>=2.95.0
+
+# Utility dependencies
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Additional tools that might be needed
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# PDF generation dependencies
+pdfkit>=1.0.0
+wkhtmltopdf>=0.2
+reportlab>=4.0.0
+markdown>=3.5.0
+jinja2>=3.1.0

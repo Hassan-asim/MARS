@@ -1,0 +1,256 @@
+---
+research_planning_and_coordination:
+  description: Analyze the user's natural language research request about {topic}
+    and create a comprehensive research plan. Break down the request into logical
+    research categories, identify key areas to investigate, and create a structured
+    approach with timelines and deliverables.
+  expected_output: 'A detailed research plan document in markdown format containing:
+    research objectives analysis, logical research categories and subcategories, timeline
+    with milestones, and deliverables for each research phase.'
+  agent: research_coordinator
+technology_research_and_analysis:
+  description: 'Conduct extensive, in-depth technology research and analysis for {topic}.
+    Research must include: 1) Latest technology trends and emerging innovations (with
+    specific examples, companies, and recent developments), 2) Comprehensive efficiency
+    analysis comparing different technological solutions with detailed performance
+    metrics, costs, and benefits, 3) Detailed identification and evaluation of free
+    and open-source alternatives to commercial technologies with feature comparisons,
+    licensing details, and implementation considerations, 4) Technology stack recommendations
+    with detailed justifications, architecture considerations, and integration requirements,
+    5) Current market leaders and their technological approaches, 6) Technical challenges
+    and limitations analysis, 7) Future technology roadmap and emerging trends that
+    could impact the project. Use internet research extensively to gather the most
+    current information, statistics, and real-world examples.'
+  expected_output: 'A comprehensive technology research report (8-12 pages) in markdown
+    format including: 1) Executive Summary of technology landscape, 2) Latest Technology
+    Trends section with specific examples and recent developments, 3) Detailed Technology
+    Comparison Matrix comparing solutions with performance metrics, costs, and benefits,
+    4) Open Source Alternatives Analysis with detailed feature comparisons and implementation
+    guidance, 5) Recommended Technology Stack with detailed justifications and architecture
+    considerations, 6) Market Leaders Analysis with their technological approaches
+    and competitive advantages, 7) Technical Challenges and Limitations section with
+    proposed solutions, 8) Future Technology Roadmap with emerging trends and potential
+    impacts, 9) Implementation Recommendations with specific tools, frameworks, and
+    best practices. All sections must include specific examples, statistics, and references
+    to current industry developments.'
+  agent: technology_research_agent
+  context:
+  - research_planning_and_coordination
+market_analysis_and_competitive_research:
+  description: 'Conduct comprehensive, detailed market research and competitive analysis
+    for {topic}. This research must include: 1) Detailed market trends analysis with
+    current market size, growth rates, market segmentation, and future projections
+    with specific statistics and sources, 2) Comprehensive competitive landscape assessment
+    identifying direct and indirect competitors, their market share, strengths, weaknesses,
+    pricing strategies, and competitive advantages, 3) Detailed market size and growth
+    projections with TAM, SAM, SOM analysis and market penetration strategies, 4)
+    Comprehensive user needs analysis including target demographics, user personas,
+    pain points, buying behavior, and user journey mapping, 5) Market opportunities
+    identification including underserved segments, emerging trends, and growth opportunities,
+    6) Market barriers and challenges analysis, 7) Go-to-market strategy recommendations,
+    8) Pricing strategy analysis with competitive pricing research. Use extensive
+    internet research to gather current market data, industry reports, competitor
+    information, and market statistics.'
+  expected_output: 'A detailed market research report (10-12 pages) in markdown format
+    containing: 1) Executive Summary of market opportunity, 2) Market Trends Analysis
+    with specific statistics, growth rates, and future projections, 3) Comprehensive
+    Competitive Landscape with detailed competitor profiles, market positioning, and
+    competitive analysis matrix, 4) Market Size and Growth Analysis with TAM/SAM/SOM
+    calculations and detailed market projections, 5) Target User Analysis with detailed
+    personas, demographics, psychographics, and behavioral patterns, 6) User Needs
+    and Pain Points Analysis with detailed user journey mapping, 7) Market Opportunities
+    Assessment with identification of underserved segments and growth potential, 8)
+    Market Barriers and Entry Challenges with mitigation strategies, 9) Go-to-Market
+    Strategy Recommendations with channel strategies and market penetration approaches,
+    10) Pricing Strategy Analysis with competitive pricing research and recommendations.
+    All sections must include specific data, statistics, sources, and actionable insights.'
+  agent: market_research_agent
+  context:
+  - research_planning_and_coordination
+patent_and_ip_landscape_analysis:
+  description: Research the patent and intellectual property landscape for {topic}.
+    Identify existing patents, potential IP conflicts, and opportunities for innovation.
+    Analyze freedom-to-operate considerations and provide recommendations for IP strategy.
+  expected_output: 'A comprehensive IP analysis report including: 1) Existing patent
+    landscape overview, 2) Potential IP conflicts and risks, 3) Freedom-to-operate
+    analysis, 4) Opportunities for new IP creation, 5) IP strategy recommendations
+    for the project.'
+  agent: patent_ip_research_agent
+  context:
+  - research_planning_and_coordination
+technical_feasibility_assessment:
+  description: Assess the technical feasibility of implementing solutions related
+    to {topic}. Identify technical requirements, potential challenges, implementation
+    approaches, and mitigation strategies for technical risks.
+  expected_output: 'A comprehensive technical feasibility report in markdown format
+    including: technical feasibility assessment, detailed technical requirements and
+    specifications, identification of technical challenges and risks, and recommended
+    mitigation strategies.'
+  agent: technical_feasibility_agent
+  context:
+  - research_planning_and_coordination
+  - technology_research_and_analysis
+financial_analysis_and_business_model_validation:
+  description: 'Conduct comprehensive, detailed financial analysis and business model
+    validation for {topic}. This analysis must include: 1) Complete business model
+    canvas with detailed validation across all 9 building blocks, 2) Comprehensive
+    cost analysis including development costs, operational costs, infrastructure costs,
+    marketing costs, and ongoing maintenance costs with detailed breakdowns, 3) Revenue
+    model analysis with multiple revenue stream identification, pricing strategies,
+    market size calculations, and detailed revenue projections for 3-5 years, 4) ROI
+    and break-even analysis with multiple scenarios (optimistic, realistic, pessimistic),
+    5) Detailed funding requirements analysis including development phases, capital
+    requirements, and funding sources evaluation, 6) Comprehensive financial risk
+    assessment with market risks, technical risks, competitive risks, and regulatory
+    risks, 7) Financial metrics and KPIs identification, 8) Investment analysis and
+    valuation considerations. Use internet research to gather current market data,
+    pricing information, competitor financial information, and industry benchmarks.'
+  expected_output: 'A detailed financial analysis report (10-15 pages) including:
+    1) Executive Summary of financial viability, 2) Complete Business Model Canvas
+    with detailed validation and market fit analysis, 3) Comprehensive Cost Analysis
+    with detailed breakdowns by category and timeline, 4) Revenue Model and Projections
+    with multiple streams and 3-5 year forecasts including monthly projections for
+    year 1, 5) ROI and Break-even Analysis with scenario planning and sensitivity
+    analysis, 6) Funding Requirements with detailed phase-by-phase capital needs and
+    funding strategy, 7) Financial Risk Assessment Matrix with detailed risk analysis
+    and mitigation strategies, 8) Key Financial Metrics and KPIs with benchmarking
+    against industry standards, 9) Investment Analysis with valuation considerations
+    and investor appeal factors, 10) Financial Recommendations with strategic guidance
+    for financial optimization and growth.'
+  agent: financial_analysis_agent
+  context:
+  - research_planning_and_coordination
+  - market_analysis_and_competitive_research
+user_experience_and_design_analysis:
+  description: Conduct comprehensive UX research for {topic} including user behavior
+    analysis, competitor UI/UX evaluation using visual analysis and web research,
+    design trend research through internet searches, and user journey mapping. Identify
+    pain points and provide actionable UX recommendations.
+  expected_output: 'A comprehensive UX research report including: 1) User behavior
+    analysis and personas, 2) Competitor UI/UX visual analysis and benchmarking, 3)
+    Design trends and best practices from web research, 4) User journey mapping and
+    pain point identification, 5) Actionable UX recommendations and design guidelines.'
+  agent: user_experience_research_agent
+  context:
+  - market_analysis_and_competitive_research
+  - technology_research_and_analysis
+visual_documentation_and_diagrams:
+  description: Create comprehensive visualizations to support the research findings
+    for {topic}. Develop Gantt charts for project timeline, system flow diagrams,
+    architecture diagrams, market analysis charts, and technology comparison visualizations.
+  expected_output: 'A complete visualization package in markdown format including:
+    1) Project Gantt chart showing timeline and milestones, 2) System flow diagrams
+    and process workflows, 3) Architecture diagrams, 4) Market analysis charts and
+    graphs, 5) Technology comparison visualizations, all properly formatted with descriptions
+    and insights.'
+  agent: visualization_specialist
+  context:
+  - technology_research_and_analysis
+  - market_analysis_and_competitive_research
+  - technical_feasibility_assessment
+regulatory_and_compliance_assessment:
+  description: Research legal and regulatory requirements for {topic} including industry-specific
+    regulations, compliance obligations, data privacy requirements, and legal risk
+    assessment. Identify potential regulatory barriers and provide compliance strategies.
+  expected_output: 'A comprehensive regulatory compliance report including: 1) Industry-specific
+    regulatory requirements, 2) Legal compliance obligations and frameworks, 3) Data
+    privacy and security regulations, 4) Regulatory risk assessment and mitigation
+    strategies, 5) Compliance roadmap and implementation guidelines.'
+  agent: regulatory_compliance_agent
+  context:
+  - research_planning_and_coordination
+  - technical_feasibility_assessment
+comprehensive_documentation_creation:
+  description: 'Create an exceptionally comprehensive and detailed documentation package
+    for {topic} that synthesizes ALL research findings into professional-grade deliverables.
+    This must include: 1) Executive Summary (2-3 pages) with strategic overview, key
+    findings, and recommendations, 2) Detailed Project Scope Document (5-10 pages)
+    with comprehensive project overview, detailed objectives, boundaries, stakeholder
+    analysis, and success criteria, 3) Comprehensive Functional Specifications (10-15
+    pages) with detailed system functionality, feature descriptions, user workflows,
+    technical specifications, 4) Complete Requirements Document (8-12 pages) covering
+    functional, non-functional, technical, business, and compliance requirements,
+    5) Business Model Canvas with detailed validation and market analysis, 6) Comprehensive
+    Risk Assessment Matrix with detailed risk analysis and mitigation strategies,
+    7) Detailed Stakeholder Analysis with engagement plans and communication strategies,
+    8) Implementation Roadmap with phased approach, timelines, milestones, resource
+    requirements, and dependencies. Each document must be professionally formatted
+    with proper sections, subsections, tables, bullet points, and clear structure
+    suitable for executive presentation and technical implementation.'
+  expected_output: 'A comprehensive, professionally formatted documentation package
+    totaling 30-50 pages including: 1) Executive Summary (2-3 pages) with strategic
+    overview and key recommendations, 2) Project Scope Document (5-10 pages) with
+    detailed project definition and boundaries, 3) Functional Specifications (10-15
+    pages) with comprehensive system functionality and features, 4) Requirements Document
+    (8-12 pages) with all requirement categories and detailed specifications, 5) Business
+    Model Canvas with validation framework, 6) Risk Assessment Matrix with detailed
+    mitigation strategies, 7) Stakeholder Analysis with engagement and communication
+    plans, 8) Implementation Roadmap with phased development approach, timelines,
+    and resource allocation. All documents must be formatted professionally with clear
+    headers, numbered sections, tables, bullet points, and executive-level presentation
+    quality suitable for both technical teams and business stakeholders.'
+  agent: documentation_specialist
+  context:
+  - technology_research_and_analysis
+  - market_analysis_and_competitive_research
+  - technical_feasibility_assessment
+  - financial_analysis_and_business_model_validation
+  - user_experience_and_design_analysis
+  - regulatory_and_compliance_assessment
+  - patent_and_ip_landscape_analysis
+research_validation_and_final_report:
+  description: Cross-validate all research findings, documentation, and visualizations
+    for {topic}. Verify information accuracy using grounding techniques, check for
+    consistency across all outputs, and create a final comprehensive report with validation
+    results.
+  expected_output: 'A final validated research package including: 1) Validation Report
+    documenting cross-validation results, information sources reliability, and consistency
+    verification, 2) Final Comprehensive Report combining all research with executive
+    summary, validated findings, and actionable recommendations, 3) Quality assurance
+    confirmation of all deliverables.'
+  agent: validation_agent
+  context:
+  - comprehensive_documentation_creation
+  - visual_documentation_and_diagrams
+  - patent_and_ip_landscape_analysis
+  - financial_analysis_and_business_model_validation
+  - user_experience_and_design_analysis
+  - regulatory_and_compliance_assessment
+professional_pdf_document_generation:
+  description: 'Convert all comprehensive research documentation and analysis reports
+    for {topic} into professionally formatted PDF documents. Create individual PDF
+    documents for: 1) Complete Documentation Package (30-50 pages), 2) Technology
+    Research Report (8-12 pages), 3) Market Analysis Report (10-12 pages), 4) Financial
+    Analysis Report (10-15 pages), 5) UX Research Report, 6) Patent & IP Analysis
+    Report, 7) Regulatory Compliance Report, 8) Technical Feasibility Report, 9) Comprehensive
+    Executive Summary (5-8 pages). Each PDF must be professionally formatted with:
+    proper headers and footers, table of contents, page numbers, consistent typography,
+    professional layout, charts and diagrams where applicable, and corporate-standard
+    presentation quality suitable for executive distribution.'
+  expected_output: 'A collection of professionally formatted PDF documents including:
+    1) Master Documentation Package PDF (30-50 pages) containing all research findings,
+    2) Individual specialized report PDFs for each research area (8-15 pages each),
+    3) Executive Summary PDF (5-8 pages) with key findings and recommendations. All
+    PDFs must feature professional formatting, consistent styling, proper structure
+    with table of contents, headers/footers, page numbers, and high-quality presentation
+    suitable for business and technical stakeholders.'
+  agent: pdf_document_generator
+  context:
+  - research_validation_and_final_report
+email_research_package_distribution:
+  description: Compile all research deliverables, documentation, and analysis reports
+    for {topic} into a comprehensive email package. Create a professional executive
+    summary and send the complete research package to {recipient_email} with
+    proper formatting and organization including PDF attachments.
+  expected_output: 'A professionally formatted email sent to {recipient_email}
+    containing: 1) Executive summary of all research findings in the email body, 2)
+    Complete PDF documentation package attached including Master Documentation Package
+    PDF, individual specialized report PDFs, and Executive Summary PDF, 3) Key insights
+    and actionable recommendations highlighted in the email, 4) Visual summaries and
+    charts mentioned with reference to attached PDFs, 5) Implementation roadmap and
+    next steps clearly outlined. The email must be professional, well-structured,
+    and include clear descriptions of all attached PDF documents with page counts
+    and content summaries.'
+  agent: email_distribution_agent
+  context:
+  - professional_pdf_document_generation

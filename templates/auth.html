@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - MARS Multi-Agent Research System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+    <!-- Login Container -->
+    <div class="auth-container" id="login-container">
+        <div class="auth-header">
+            <div class="logo">MARS</div>
+            <h1 class="auth-title">Welcome Back</h1>
+            <p class="auth-subtitle">Sign in to access your AI research assistant</p>
+        </div>
+
+        <div class="error-message"></div>
+        <div class="success-message"></div>
+
+        <form class="auth-form" id="login-form">
+            <div class="form-group">
+                <input 
+                    type="email" 
+                    id="login-email" 
+                    class="form-input" 
+                    placeholder="Email address"
+                    required
+                    autocomplete="email"
+                >
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="password" 
+                    id="login-password" 
+                    class="form-input" 
+                    placeholder="Password"
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+            
+            <button type="submit" class="auth-button" id="login-btn">
+                Sign In
+            </button>
+        </form>
+
+        <div class="divider">or</div>
+
+        <button type="button" class="auth-button google-button google-signin">
+            <div class="google-icon"></div>
+            Continue with Google
+        </button>
+
+        <div class="form-toggle">
+            <p class="toggle-text">Don't have an account?</p>
+            <button type="button" class="toggle-button">Create account</button>
+        </div>
+    </div>
+
+    <!-- Signup Container -->
+    <div class="auth-container" id="signup-container" style="display: none;">
+        <div class="auth-header">
+            <div class="logo">MARS</div>
+            <h1 class="auth-title">Create Account</h1>
+            <p class="auth-subtitle">Join MARS and unlock the power of AI research</p>
+        </div>
+
+        <div class="error-message"></div>
+        <div class="success-message"></div>
+
+        <form class="auth-form" id="signup-form">
+            <div class="form-group">
+                <input 
+                    type="email" 
+                    id="signup-email" 
+                    class="form-input" 
+                    placeholder="Email address"
+                    required
+                    autocomplete="email"
+                >
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="password" 
+                    id="signup-password" 
+                    class="form-input" 
+                    placeholder="Password"
+                    required
+                    autocomplete="new-password"
+                    minlength="6"
+                >
+            </div>
+            
+            <div class="form-group">
+                <input 
+                    type="password" 
+                    id="signup-confirm-password" 
+                    class="form-input" 
+                    placeholder="Confirm password"
+                    required
+                    autocomplete="new-password"
+                    minlength="6"
+                >
+            </div>
+            
+            <button type="submit" class="auth-button" id="signup-btn">
+                Create Account
+            </button>
+        </form>
+
+        <div class="divider">or</div>
+
+        <button type="button" class="auth-button google-button google-signin">
+            <div class="google-icon"></div>
+            Continue with Google
+        </button>
+
+        <div class="form-toggle">
+            <p class="toggle-text">Already have an account?</p>
+            <button type="button" class="toggle-button">Sign in</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { 
+            getAuth, 
+            signInWithEmailAndPassword, 
+            createUserWithEmailAndPassword,
+            signInWithPopup,
+            GoogleAuthProvider,
+            onAuthStateChanged
+        } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBnVu5BDJqxIlpKtQxqRI4RCQ5VFiJxX9k",
+            authDomain: "multi-tool-agent-7208a.firebaseapp.com",
+            projectId: "multi-tool-agent-7208a",
+            storageBucket: "multi-tool-agent-7208a.firebasestorage.app",
+            messagingSenderId: "680606737140",
+            appId: "1:680606737140:web:0f429a2e2837a3f257b4a1",
+            measurementId: "G-YP67VWBZT4"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        // Authentication Manager
+        class FirebaseAuthManager {
+            constructor() {
+                this.auth = auth;
+                this.googleProvider = googleProvider;
+                this.init();
+            }
+
+            init() {
+                this.setupAuthStateListener();
+                this.setupEventListeners();
+            }
+
+            setupAuthStateListener() {
+                onAuthStateChanged(this.auth, (user) => {
+                    if (user) {
+                        // User is signed in
+                        localStorage.setItem('mars_user', JSON.stringify({
+                            uid: user.uid,
+                            email: user.email,
+                            displayName: user.displayName || user.email.split('@')[0],
+                            photoURL: user.photoURL
+                        }));
+                        window.location.href = '/';
+                    }
+                });
+            }
+
+            setupEventListeners() {
+                // Login form
+                const loginForm = document.getElementById('login-form');
+                if (loginForm) {
+                    loginForm.addEventListener('submit', (e) => this.handleLogin(e));
+                }
+
+                // Signup form
+                const signupForm = document.getElementById('signup-form');
+                if (signupForm) {
+                    signupForm.addEventListener('submit', (e) => this.handleSignup(e));
+                }
+
+                // Google signin buttons
+                const googleButtons = document.querySelectorAll('.google-signin');
+                googleButtons.forEach(button => {
+                    button.addEventListener('click', () => this.handleGoogleSignin());
+                });
+
+                // Form toggle buttons
+                this.setupFormToggle();
+            }
+
+            setupFormToggle() {
+                const toggleButtons = document.querySelectorAll('.toggle-button');
+                toggleButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        const loginContainer = document.getElementById('login-container');
+                        const signupContainer = document.getElementById('signup-container');
+                        
+                        if (loginContainer.style.display === 'none') {
+                            loginContainer.style.display = 'block';
+                            signupContainer.style.display = 'none';
+                        } else {
+                            loginContainer.style.display = 'none';
+                            signupContainer.style.display = 'block';
+                        }
+                    });
+                });
+            }
+
+            async handleLogin(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                if (!email || !password) {
+                    this.showError('Please fill in all fields');
+                    return;
+                }
+
+                this.showLoading('login-btn', 'Signing in...');
+
+                try {
+                    await signInWithEmailAndPassword(this.auth, email, password);
+                    this.showSuccess('Login successful! Redirecting...');
+                } catch (error) {
+                    this.showError(this.getErrorMessage(error.code));
+                } finally {
+                    this.hideLoading('login-btn', 'Sign In');
+                }
+            }
+
+            async handleSignup(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('signup-email').value;
+                const password = document.getElementById('signup-password').value;
+                const confirmPassword = document.getElementById('signup-confirm-password').value;
+                
+                if (!email || !password || !confirmPassword) {
+                    this.showError('Please fill in all fields');
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    this.showError('Passwords do not match');
+                    return;
+                }
+
+                if (password.length < 6) {
+                    this.showError('Password must be at least 6 characters');
+                    return;
+                }
+
+                this.showLoading('signup-btn', 'Creating account...');
+
+                try {
+                    await createUserWithEmailAndPassword(this.auth, email, password);
+                    this.showSuccess('Account created successfully! Redirecting...');
+                } catch (error) {
+                    this.showError(this.getErrorMessage(error.code));
+                } finally {
+                    this.hideLoading('signup-btn', 'Create Account');
+                }
+            }
+
+            async handleGoogleSignin() {
+                const button = document.querySelector('.google-signin');
+                this.showLoadingButton(button, 'Connecting to Google...');
+
+                try {
+                    await signInWithPopup(this.auth, this.googleProvider);
+                    this.showSuccess('Google sign-in successful! Redirecting...');
+                } catch (error) {
+                    this.showError(this.getErrorMessage(error.code));
+                    this.hideLoadingButton(button, 'Continue with Google');
+                }
+            }
+
+            getErrorMessage(errorCode) {
+                switch (errorCode) {
+                    case 'auth/user-not-found':
+                        return 'No account found with this email address';
+                    case 'auth/wrong-password':
+                        return 'Incorrect password';
+                    case 'auth/email-already-in-use':
+                        return 'Email address is already registered';
+                    case 'auth/weak-password':
+                        return 'Password is too weak';
+                    case 'auth/invalid-email':
+                        return 'Invalid email address';
+                    case 'auth/popup-closed-by-user':
+                        return 'Sign-in popup was closed';
+                    default:
+                        return 'An error occurred. Please try again.';
+                }
+            }
+
+            showError(message) {
+                this.hideMessages();
+                const errorDiv = document.querySelector('.error-message');
+                if (errorDiv) {
+                    errorDiv.textContent = message;
+                    errorDiv.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        errorDiv.style.display = 'none';
+                    }, 5000);
+                }
+            }
+
+            showSuccess(message) {
+                this.hideMessages();
+                const successDiv = document.querySelector('.success-message');
+                if (successDiv) {
+                    successDiv.textContent = message;
+                    successDiv.style.display = 'block';
+                }
+            }
+
+            hideMessages() {
+                const errorDiv = document.querySelector('.error-message');
+                const successDiv = document.querySelector('.success-message');
+                
+                if (errorDiv) errorDiv.style.display = 'none';
+                if (successDiv) successDiv.style.display = 'none';
+            }
+
+            showLoading(buttonId, text) {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.disabled = true;
+                    button.innerHTML = `<span class="loading"></span>${text}`;
+                }
+            }
+
+            hideLoading(buttonId, originalText) {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                }
+            }
+
+            showLoadingButton(button, text) {
+                if (button) {
+                    button.disabled = true;
+                    button.innerHTML = `<span class="loading"></span>${text}`;
+                }
+            }
+
+            hideLoadingButton(button, originalText) {
+                if (button) {
+                    button.disabled = false;
+                    button.innerHTML = `<div class="google-icon"></div>${originalText}`;
+                }
+            }
+        }
+
+        // Initialize Firebase Auth Manager
+        document.addEventListener('DOMContentLoaded', () => {
+            window.firebaseAuthManager = new FirebaseAuthManager();
+        });
+    </script>
+</body>
+</html>
