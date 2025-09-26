@@ -15,7 +15,9 @@ current_status = "Ready"
 
 def check_auth():
     """Check if user is authenticated"""
-    return 'user' in session or request.headers.get('Authorization')
+    # For demo purposes, allow access after any login attempt
+    # In production, this would check Firebase tokens
+    return 'user' in session or request.path == '/auth' or request.path.startswith('/static')
 
 @app.route('/')
 def index():
